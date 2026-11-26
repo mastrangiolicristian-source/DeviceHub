@@ -2710,3 +2710,8 @@ def create_app(
         threading.Thread(target=webhook_worker, daemon=True).start()
 
     return app
+
+settings = Settings()
+store = TelemetryStore(settings.db_path)
+app = create_app(settings, store)
+```[cite: 13]
