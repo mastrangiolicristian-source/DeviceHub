@@ -1,0 +1,24 @@
+{
+  "name": "teltonika-fmc150",
+  "device": "Teltonika FMC150 (CAN integrato, 4G Cat 1)",
+  "source": "https://wiki.teltonika-gps.com/view/FMC150_Teltonika_Data_Sending_Parameters_ID",
+  "note": "ID verificati sul wiki ufficiale FMC150. Gli elementi CAN arrivano solo se abilitati in Configurator (CAN -> Send data to server) e con il programma veicolo corretto. Gli ID CAN non mappati restano comunque salvati in io_json.",
+  "io": {
+    "1": "din1",
+    "21": "gsm_level",
+    "66": "external_voltage_mv",
+    "67": "battery_voltage_mv",
+    "84": "can_fuel_liters",
+    "87": "odometer_m",
+    "89": "fuel_level_pct",
+    "102": "engine_hours",
+    "115": "engine_temp",
+    "239": "ignition",
+    "240": "movement"
+  },
+  "divisors": {
+    "can_fuel_liters": 10,
+    "engine_temp": 10,
+    "engine_hours": 60
+  }
+}

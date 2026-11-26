@@ -1,0 +1,26 @@
+[Unit]
+Description=DeviceHub - ingestione GPS e API flotta
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=devicehub
+Group=devicehub
+WorkingDirectory=/opt/devicehub
+EnvironmentFile=/opt/devicehub/.env
+ExecStart=/opt/devicehub/.venv/bin/python -m devicehub
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Irrigidimento: il processo scrive solo nella propria directory (database SQLite).
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/devicehub
+
+[Install]
+WantedBy=multi-user.target
