@@ -2714,4 +2714,3 @@ def create_app(
 settings = Settings()
 store = TelemetryStore(settings.db_path)
 app = create_app(settings, store)
-```[cite: 13]
