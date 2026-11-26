@@ -2711,6 +2711,26 @@ def create_app(
 
     return app
 
-settings = Settings()
+import os
+
+settings = Settings(
+    db_path=os.getenv("DEVICEHUB_DB_PATH", "telemetry.db"),
+    tcp_host=os.getenv("DEVICEHUB_TCP_HOST", "0.0.0.0"),
+    tcp_port=int(os.getenv("DEVICEHUB_TCP_PORT", "5000")),
+    api_host=os.getenv("DEVICEHUB_API_HOST", "0.0.0.0"),
+    api_port=int(os.getenv("DEVICEHUB_API_PORT", "8000")),
+    api_token=os.getenv("DEVICEHUB_API_TOKEN", ""),
+    allow_unknown_devices=True,
+    reject_unknown_devices=False,
+    log_io=False,
+    profile_path="",
+    idle_timeout=300,
+    public_host=os.getenv("DEVICEHUB_PUBLIC_HOST", "localhost"),
+    public_port=int(os.getenv("DEVICEHUB_PUBLIC_PORT", "80")),
+    apn="internet",
+    codec=12,
+    douts=2,
+    company=os.getenv("DEVICEHUB_COMPANY", "DeviceHub"),
+)
 store = TelemetryStore(settings.db_path)
 app = create_app(settings, store)
